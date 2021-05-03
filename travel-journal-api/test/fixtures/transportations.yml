@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  trip: one
+  start_location: MyString
+  end_location: MyString
+  mode: MyString
+  departure_date: MyString
+  arrival_date: MyString
+
+two:
+  trip: two
+  start_location: MyString
+  end_location: MyString
+  mode: MyString
+  departure_date: MyString
+  arrival_date: MyString
