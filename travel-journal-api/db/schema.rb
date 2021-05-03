@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_03_045330) do
+ActiveRecord::Schema.define(version: 2021_05_03_054236) do
+
+  create_table "journals", force: :cascade do |t|
+    t.integer "trip_id", null: false
+    t.string "content"
+    t.string "photo_url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["trip_id"], name: "index_journals_on_trip_id"
+  end
 
   create_table "locations", force: :cascade do |t|
     t.integer "trip_id", null: false
@@ -39,12 +48,11 @@ ActiveRecord::Schema.define(version: 2021_05_03_045330) do
     t.string "title"
     t.datetime "start_date"
     t.datetime "end_date"
-    t.string "photo_url"
-    t.string "blog"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "journals", "trips"
   add_foreign_key "locations", "trips"
   add_foreign_key "transportations", "trips"
 end
