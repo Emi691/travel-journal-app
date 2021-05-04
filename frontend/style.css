@@ -15,3 +15,16 @@ h3 {
     font-size: 30px;
     font-weight: 300
 }
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px
+}
+
+.card {
+    border-radius: .25rem;
+    background-color: white;
+    height: 250px;
+    width: 200px
+}
