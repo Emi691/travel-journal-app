@@ -6,6 +6,7 @@ class Trip {
     }
 
     static renderTrips() {
+    renderTrips() {
         fetch('http://localhost:3000/trips')
             .then(response => response.json())
             .then(object => console.log(object))
