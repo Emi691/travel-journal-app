@@ -5,7 +5,7 @@ class Trip {
         this.endDate = endDate
     }
 
-    renderTrips() {
+    static renderTrips() {
         fetch('http://localhost:3000/trips')
             .then(response => response.json())
             .then(object => console.log(object))
