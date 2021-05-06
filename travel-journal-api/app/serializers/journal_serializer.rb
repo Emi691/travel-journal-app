@@ -1,4 +1,4 @@
 class JournalSerializer
   include FastJsonapi::ObjectSerializer
-  attributes
+  attributes :photo_url, :content
 end
