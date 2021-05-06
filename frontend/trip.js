@@ -2,7 +2,7 @@ class Trip {
     constructor(trip){
         this.id = trip.id
         this.title = trip.title
-        this.photo_url = trip.photo_url
+        this.photoUrl = trip.photo_url
         this.startDate = trip.start_date
         this.endDate = trip.end_date
     }
@@ -18,7 +18,7 @@ class Trip {
                 })
     }
 
-   appendTrip() {
+    appendTrip() {
        const tripContainer = document.querySelector(".trips")
        let card = document.createElement('div')
        let div = document.createElement('div')
@@ -26,7 +26,8 @@ class Trip {
        card.className = "card"
        card.id = this.id
        div.innerText = this.title
-       img.src = this.image_url
+       img.src = this.photoUrl
+       img.style = "width:100%"
        card.append(img)
        card.append(div)
        tripContainer.append(card) 
