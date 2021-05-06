@@ -2,9 +2,9 @@ class Trip {
     constructor(trip){
         this.id = trip.id
         this.title = trip.title
-        this.photoUrl = trip.photo_url
-        this.startDate = trip.start_date
-        this.endDate = trip.end_date
+        this.photoUrl = trip.photoUrl
+        this.startDate = trip.startDate
+        this.endDate = trip.endDate
     }
 
     static fetchTrips() {
