@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2021_05_03_054236) do
 
   create_table "trips", force: :cascade do |t|
     t.string "title"
+    t.string "photo_url"
     t.datetime "start_date"
     t.datetime "end_date"
     t.datetime "created_at", precision: 6, null: false
