@@ -1,16 +1,17 @@
 class Trip {
     constructor(trip){
         this.id = trip.id
-        this.title = trip.title
-        this.photoUrl = trip.photoUrl
-        this.startDate = trip.startDate
-        this.endDate = trip.endDate
+        this.title = trip.attributes.title
+        this.photoUrl = trip.attributes.photoUrl
+        this.startDate = trip.attributes.startDate
+        this.endDate = trip.attributes.endDate
     }
 
     static fetchTrips() {
             fetch('http://localhost:3000/trips')
                 .then(resp => resp.json())
-                .then(trips => {
+                .then(obj => {
+                    let trips = obj.data
                     for ( const trip of trips) {
                         let newTrip = new Trip(trip)
                         newTrip.appendTrip()
