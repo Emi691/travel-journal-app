@@ -20,7 +20,19 @@ class Trip {
     }
 
     static createTrip() {
-        
+        console.log(this)
+        const tripData = {}
+
+        const configObj = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                tripData    
+            })
+        }
     }
 
     appendTrip() {
