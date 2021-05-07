@@ -19,7 +19,7 @@ class Trip {
                 })
     }
 
-    static createTrip() {
+    static createTrip(event) {
         console.log(this)
         const tripData = {}
 
