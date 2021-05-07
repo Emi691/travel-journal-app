@@ -5,7 +5,8 @@ class TripsController < ApplicationController
     end
 
     def create
-        let trip = Trip.create(trip_params)
+        trip = Trip.create(trip_params)
+        render json: TripSerializer.new(trip)
     end
 
     private

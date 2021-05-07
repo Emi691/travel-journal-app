@@ -19,7 +19,7 @@ class Trip {
                 })
     }
 
-    static fetchTrip() {
+    static fetchTrip(configObj) {
         fetch('http://localhost:3000/trips', configObj)
             .then(resp => resp.json())
             .then(obj => console.log(obj))
@@ -27,22 +27,24 @@ class Trip {
 
     static createTrip(event) {
         const formFields = event.target.children
-        const tripData = {
+
+        const trip = {
             title: formFields[1].value,
-            startDate: formFields[3].value,
-            endDate: formFields[5].value,
-            photoUrl: formFields[7].value
+            start_date: formFields[3].value,
+            end_date: formFields[5].value,
+            photo_url: formFields[7].value
         }
+
         const configObj = {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json"
             },
-            body: JSON.stringify({
-                tripData    
-            })
+            body: JSON.stringify({trip})
         }
+
+        Trip.fetchTrip(configObj)
     }
 
     appendTrip() {

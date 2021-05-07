@@ -43,3 +43,8 @@ h3 {
     align-self: center;
     text-align: center
 }
+
+.card img {
+    object-fit: cover;
+    max-height: 150px
+}
