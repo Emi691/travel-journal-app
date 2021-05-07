@@ -19,10 +19,20 @@ class Trip {
                 })
     }
 
-    static createTrip(event) {
-        console.log(this)
-        const tripData = {}
+    static fetchTrip() {
+        fetch('http://localhost:3000/trips', configObj)
+            .then(resp => resp.json())
+            .then(obj => console.log(obj))
+    }
 
+    static createTrip(event) {
+        const formFields = event.target.children
+        const tripData = {
+            title: formFields[1].value,
+            startDate: formFields[3].value,
+            endDate: formFields[5].value,
+            photoUrl: formFields[7].value
+        }
         const configObj = {
             method: "POST",
             headers: {
