@@ -19,6 +19,10 @@ class Trip {
                 })
     }
 
+    static createTrip() {
+        
+    }
+
     appendTrip() {
        const tripContainer = document.querySelector(".trips")
        let card = document.createElement('div')
