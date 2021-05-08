@@ -67,3 +67,12 @@ h3 {
     right: 0;
     
 }
+
+
+.showTrip {
+    background-color: white;
+    height: auto;
+    min-height: 1000px;
+    padding: 50px;
+    margin: 30px
+}
