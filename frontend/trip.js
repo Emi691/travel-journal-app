@@ -81,6 +81,14 @@ class Trip {
         xButton.addEventListener('click', event => {
             Trip.deleteEvent(event)
         })
+
+        title.addEventListener('click', event => {
+            let body = document.querySelector('body')
+            let showDiv = document.createElement('div')
+            showDiv.className = "showTrip"
+            body.innerHTML = ""
+            body.append(showDiv)
+        })
    }
 
    static deleteEvent(event){
