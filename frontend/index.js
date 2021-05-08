@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', (event) => {
     Trip.fetchTrips()
-
+ 
     const tripButton = document.querySelector('#newTrip')
     const tripFormDiv = document.querySelector('.form')
     const tripForm = 

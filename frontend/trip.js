@@ -1,11 +1,16 @@
 class Trip {
+    static all = []
+
     constructor(trip){
         this.id = trip.id
         this.title = trip.attributes.title
         this.photoUrl = trip.attributes.photoUrl
         this.startDate = trip.attributes.startDate
         this.endDate = trip.attributes.endDate
+        Trip.all.push(this)
     }
+
+    
 
     static fetchTrips() {
             fetch('http://localhost:3000/trips')
@@ -72,23 +77,44 @@ class Trip {
         img.style = "width:100%"
         xButton.innerText = "x"
         xButton.className = "cardButton"
-        card.append(img)
-        card.append(title)
-        card.append(dates)
-        card.append(xButton)
+        card.append(img, title, dates, xButton)
         tripContainer.append(card)
         
-        xButton.addEventListener('click', event => {
-            Trip.deleteEvent(event)
-        })
+        Trip.clickButton(xButton)
 
-        title.addEventListener('click', event => {
-            let body = document.querySelector('body')
-            let showDiv = document.createElement('div')
-            showDiv.className = "showTrip"
-            body.innerHTML = ""
-            body.append(showDiv)
-        })
+        Trip.clickTitle(title) 
+   }
+
+   static clickButton(xButton) {
+    xButton.addEventListener('click', event => {
+        Trip.deleteEvent(event)
+    })
+   }
+
+   static clickTitle(title) {
+    title.addEventListener('click', event => {
+        let tripId = event.target.parentElement.id
+        let trip = Trip.all.find(trip => trip.id === tripId)
+        trip.showTrip(event)
+        
+    })
+   }
+
+   showTrip(event) {
+        let body = document.querySelector('body')
+        let showDiv = document.createElement('div')
+        let title = document.createElement('h3')
+        let depDate = document.createElement('p')
+        let start = new Date (this.startDate)
+        let end = new Date (this.endDate)
+        let retDate = document.createElement('p')
+        title.innerText = this.title
+        depDate.innerText = `Departure Date: ${start.toDateString()}`
+        retDate.innerText = `Return Date: ${end.toDateString()}`
+        showDiv.className = "showTrip"
+        body.innerHTML = ""
+        showDiv.append(title, depDate, retDate)
+        body.append(showDiv)
    }
 
    static deleteEvent(event){
