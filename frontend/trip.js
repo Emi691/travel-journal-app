@@ -76,7 +76,31 @@ class Trip {
         card.append(title)
         card.append(dates)
         card.append(xButton)
-        tripContainer.append(card) 
+        tripContainer.append(card)
+        
+        xButton.addEventListener('click', event => {
+            Trip.deleteEvent(event)
+        })
    }
+
+   static deleteEvent(event){
+    const tripId = event.target.parentElement.id
+
+    const configObj = {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify({tripId})
+
+        Trip.fetchTripId(configObj)
+    }
+   }
+
+   static fetchTripId() {
+
+   } 
+
 } 
 

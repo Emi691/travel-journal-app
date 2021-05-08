@@ -24,8 +24,5 @@ document.addEventListener('DOMContentLoaded', (event) => {
             Trip.createTrip(event)
         }) 
     })
-
-    
-
     
 }) 
