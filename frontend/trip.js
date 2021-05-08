@@ -92,16 +92,18 @@ class Trip {
             "Content-Type": "application/json",
             "Accept": "application/json"
         },
-        body: JSON.stringify({tripId})
-
-        Trip.fetchTripId(configObj, tripId)
+        body: JSON.stringify({trip: {id: tripId}})
     }
+
+    Trip.fetchTripId(configObj, tripId)
    }
 
    static fetchTripId(configObj, tripId) {
-    fetch(`http://localhost:3000/trip/${tripId}`, configObj)
+    fetch(`http://localhost:3000/trips/${tripId}`, configObj)
         .then(resp => resp.json())
-        .then(obj => console.log(obj))
+        .then(obj => {
+            document.getElementById(`${obj.id}`).remove()
+        })
    } 
 
 } 
