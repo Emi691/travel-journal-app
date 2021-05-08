@@ -69,6 +69,7 @@ class Trip {
         img.src = this.photoUrl
         img.style = "width:100%"
         xButton.innerText = "x"
+        xButton.className = "cardButton"
         card.append(img)
         card.append(title)
         card.append(dates)

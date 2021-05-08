@@ -4,7 +4,7 @@ body {
     font-weight: 300;
 }
 
-button{
+#newTrip {
     display: flex;
     justify-content: center;
     margin: auto;
@@ -37,8 +37,9 @@ h3 {
 }
 
 .card {
+    position: relative;
     background-color: white;
-    height: 200px;
+    height: 300px;
     width: 200px;
     align-self: center;
     text-align: center
@@ -47,4 +48,22 @@ h3 {
 .card img {
     object-fit: cover;
     max-height: 150px
+}
+
+.card h4 {
+    font-size: 20px
+}
+
+.card p {
+    font-size: 15px
+}
+
+.card .cardButton {
+    background-color: transparent;
+    border-radius: 5px;
+    border-width: thin;
+    position: absolute;
+    top: 0;
+    right: 0;
+    
 }
