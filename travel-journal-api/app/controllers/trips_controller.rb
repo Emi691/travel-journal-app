@@ -5,8 +5,12 @@ class TripsController < ApplicationController
     end
 
     def create
-        trip = Trip.create(trip_params)
-        render json: TripSerializer.new(trip)
+        trip = Trip.new(trip_params)
+        if trip.save
+            render json: TripSerializer.new(trip)
+        else
+            render json: {alert: trip.errors.full_messages}
+        end
     end
 
     private

@@ -22,7 +22,13 @@ class Trip {
     static fetchTrip(configObj) {
         fetch('http://localhost:3000/trips', configObj)
             .then(resp => resp.json())
-            .then(obj => console.log(obj))
+            .then(trip => {
+                let newTrip = new Trip(trip.data)
+                newTrip.appendTrip()
+            })
+            .catch(function(error) {
+                alert("Failed to add trip, please try again")
+            })
     }
 
     static createTrip(event) {
@@ -48,18 +54,26 @@ class Trip {
     }
 
     appendTrip() {
-       const tripContainer = document.querySelector(".trips")
-       let card = document.createElement('div')
-       let div = document.createElement('div')
-       let img = document.createElement('img')
-       card.className = "card"
-       card.id = this.id
-       div.innerText = this.title
-       img.src = this.photoUrl
-       img.style = "width:100%"
-       card.append(img)
-       card.append(div)
-       tripContainer.append(card) 
+        let start = new Date (this.startDate)
+        let end = new Date (this.endDate)
+        const tripContainer = document.querySelector(".trips")
+        let card = document.createElement('div')
+        let title = document.createElement('h4')
+        let dates = document.createElement('p')
+        let img = document.createElement('img')
+        let xButton = document.createElement('button')
+        card.className = "card"
+        card.id = this.id
+        title.innerText = this.title
+        dates.innerText = `${start.toDateString()} - ${end.toDateString()}`
+        img.src = this.photoUrl
+        img.style = "width:100%"
+        xButton.innerText = "x"
+        card.append(img)
+        card.append(title)
+        card.append(dates)
+        card.append(xButton)
+        tripContainer.append(card) 
    }
 } 
 
