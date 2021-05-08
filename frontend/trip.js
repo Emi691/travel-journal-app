@@ -25,6 +25,8 @@ class Trip {
             .then(trip => {
                 let newTrip = new Trip(trip.data)
                 newTrip.appendTrip()
+                document.querySelector('#newTrip').style.display = "block"
+                document.querySelector('.form').innerHTML = ""
             })
             .catch(function(error) {
                 alert("Failed to add trip, please try again")
