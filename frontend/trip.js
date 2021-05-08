@@ -94,12 +94,14 @@ class Trip {
         },
         body: JSON.stringify({tripId})
 
-        Trip.fetchTripId(configObj)
+        Trip.fetchTripId(configObj, tripId)
     }
    }
 
-   static fetchTripId() {
-
+   static fetchTripId(configObj, tripId) {
+    fetch(`http://localhost:3000/trip/${tripId}`, configObj)
+        .then(resp => resp.json())
+        .then(obj => console.log(obj))
    } 
 
 } 
