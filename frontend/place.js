@@ -32,9 +32,11 @@ class Place {
         let placeDiv = document.createElement('div')
         let name = document.createElement('p')
         let dates = document.createElement('p')
+        let startDate = new Date (this.arrival_date)
+        let endDate = new Date (this.departure_date)
         name.innerText = this.name
         name.className = "name"
-        dates.innerText = `arriving: ${this.arrival_date} departing: ${this.departure_date}`
+        dates.innerText = `Arriving: ${startDate.toDateString()} Departing: ${endDate.toDateString()}`
         dates.className = "dates"
         name.append(dates)
         placeDiv.append(name)
