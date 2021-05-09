@@ -112,7 +112,6 @@ class Trip {
         let depDate = document.createElement('p')
         let retDate = document.createElement('p')
         let backButton = document.createElement('Button')
-        let placesDiv = document.createElement('div')
         let transportsDiv = document.createElement('div')
         let journalsDiv = document.createElement('div')
         title.innerText = this.title
@@ -121,15 +120,14 @@ class Trip {
         backButton.innerText = "Back"
         backButton.className = "back"
         showDiv.className = "showTrip"
-        placesDiv.className = "places"
-        placesDiv.innerHTML = "<h4>Locations: </h4>"
         transportsDiv.className = "transports"
         transportsDiv.innerHTML = "<h4> Transportations: </h4>"
         journalsDiv.className = "journals"
         journalsDiv.innerHTML = "<h4>Journals: </h4>"
         body.innerHTML = ""
-        showDiv.append(title, depDate, retDate, backButton, placesDiv, transportsDiv, journalsDiv) 
+        showDiv.append(title, depDate, retDate, backButton, transportsDiv, journalsDiv) 
         body.append(showDiv)
+        Place.appendPlaces()
 
         for (const place of this.places) {
             place.appendPlace()
