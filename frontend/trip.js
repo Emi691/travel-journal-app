@@ -7,9 +7,9 @@ class Trip {
         this.photoUrl = trip.attributes.photoUrl
         this.startDate = trip.attributes.startDate
         this.endDate = trip.attributes.endDate
-        this.places = 
-        this.transportations = []
-        this.journals = []
+        this.places = trip.attributes.places.map(place => new Place(place))
+        this.transportations = trip.attributes.transportations.map(transport => new Transportation(transport))
+        this.journals = trip.attributes.journals.map(journal => new Journal(journal))
         Trip.allTrips.push(this)
     }
 
@@ -22,18 +22,6 @@ class Trip {
                     let trips = obj.data
                     for ( const trip of trips) {
                         let newTrip = new Trip(trip)
-                        let tripPlaces = trip.attributes.places
-                        let tripTransports = trip.attributes.transportations
-                        let tripJournals = trip.attributes.journals
-                        for (const place of tripPlaces){
-                             newTrip.places.push(new Place(place))
-                        }
-                        for (const transport of tripTransports){
-                            newTrip.transportations.push(new Transportation(transport))
-                        }
-                        for (const journal of tripJournals){
-                            newTrip.journals.push(new Journal(journal))
-                        }
                         newTrip.appendTrip()
                     }
                 })
