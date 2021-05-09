@@ -93,8 +93,13 @@ class Place {
 
     static fetchNewPlace(configObj) {
         fetch("http://localhost:3000/places", configObj)
-            .then(resp => resp.json)
-            .then(place => console.log(place))
+            .then(resp => resp.json())
+            .then(place => {
+                let attributes = place.data.attributes
+                let formatPlace = {...attributes, ...place.data}
+                let newPlace = new Place(formatPlace)
+                newPlace.appendPlace()
+            })
     }
 
 }
