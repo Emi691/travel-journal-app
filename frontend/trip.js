@@ -7,6 +7,7 @@ class Trip {
         this.photoUrl = trip.attributes.photoUrl
         this.startDate = trip.attributes.startDate
         this.endDate = trip.attributes.endDate
+        this.locations = []
         Trip.allTrips.push(this)
     }
 
@@ -19,6 +20,11 @@ class Trip {
                     let trips = obj.data
                     for ( const trip of trips) {
                         let newTrip = new Trip(trip)
+                        let tripLocations = trip.attributes.locations
+                        for (const location of tripLocations){
+                             newTrip.locations.push(new Location(location))
+                        }
+                        debugger
                         newTrip.appendTrip()
                     }
                 })
@@ -102,7 +108,6 @@ class Trip {
 
    showTrip(event) {
         let body = document.querySelector('body')
-        let bodyHTML = body.innerHTML
         let showDiv = document.createElement('div')
         let title = document.createElement('h3')
         let start = new Date (this.startDate)
