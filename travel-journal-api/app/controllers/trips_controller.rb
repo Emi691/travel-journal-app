@@ -1,6 +1,6 @@
 class TripsController < ApplicationController
     def index
-        trips = Trip.all
+        trips = Trip.allTrips
         render json: TripSerializer.new(trips)
     end
 

@@ -1,5 +1,5 @@
 class Trip {
-    static all = []
+    static allTrips = []
 
     constructor(trip){
         this.id = trip.id
@@ -7,7 +7,7 @@ class Trip {
         this.photoUrl = trip.attributes.photoUrl
         this.startDate = trip.attributes.startDate
         this.endDate = trip.attributes.endDate
-        Trip.all.push(this)
+        Trip.allTrips.push(this)
     }
 
     
@@ -94,7 +94,7 @@ class Trip {
    static clickTitle(title) {
     title.addEventListener('click', event => {
         let tripId = event.target.parentElement.id
-        let trip = Trip.all.find(trip => trip.id === tripId)
+        let trip = Trip.allTrips.find(trip => trip.id === tripId)
         trip.showTrip(event)
         
     })
