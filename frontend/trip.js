@@ -124,14 +124,20 @@ class Trip {
         let depDate = document.createElement('p')
         let retDate = document.createElement('p')
         let backButton = document.createElement('Button')
+        let locationsDiv = document.createElement('div')
         title.innerText = this.title
         depDate.innerText = `Departure Date: ${start.toDateString()}`
         retDate.innerText = `Return Date: ${end.toDateString()}`
         backButton.innerText = "Back"
         backButton.className = "back"
         showDiv.className = "showTrip"
+        locationsDiv.innerHTML = "<h4>Locations: </h4>"
         body.innerHTML = ""
-        showDiv.append(title, depDate, retDate, backButton)
+        showDiv.append(title, depDate, retDate, backButton, locationsDiv)
+        for (location of this.locations) {
+            location.appendLocation(locationsDiv)
+        }
+
         body.append(showDiv)
         
         backButton.addEventListener('click', event => {

@@ -9,7 +9,7 @@ class Location {
         Location.allLocations.push(this)
     }
 
-    appendLocation() {
+    appendLocation(locationsDiv) {
         let locDiv = document.createElement('div')
         let name = document.createElement('p')
         let timeZone = document.createElement('p')
@@ -20,5 +20,6 @@ class Location {
         arrivalDate.innerText = this.arrival_date
         departureDate.innerText = this.departure_date
         locDiv.append(name, timeZone, arrivalDate, departureDate)
+        locationsDiv.append(locDiv)
     }
 }
