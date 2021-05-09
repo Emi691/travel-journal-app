@@ -106,12 +106,16 @@ class Trip {
    showTrip(event) {
         let body = document.querySelector('body')
         let showDiv = document.createElement('div')
+        let tripId = document.createElement("p")
         let title = document.createElement('h3')
         let start = new Date (this.startDate)
         let end = new Date (this.endDate)
         let depDate = document.createElement('p')
         let retDate = document.createElement('p')
         let backButton = document.createElement('Button')
+        tripId.innerText = this.id
+        tripId.id = "tripId"
+        tripId.style.display = "none"
         title.innerText = this.title
         depDate.innerText = `Departure Date: ${start.toDateString()}`
         retDate.innerText = `Return Date: ${end.toDateString()}`
@@ -119,7 +123,7 @@ class Trip {
         backButton.className = "back"
         showDiv.className = "showTrip"
         body.innerHTML = ""
-        showDiv.append(title, depDate, retDate, backButton) 
+        showDiv.append(title, depDate, retDate, backButton, tripId) 
         body.append(showDiv)
         Place.appendPlaces()
         Transportation.appendTransportations()

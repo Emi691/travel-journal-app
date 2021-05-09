@@ -68,27 +68,33 @@ class Place {
         form.addEventListener('submit', event => {
             event.preventDefault()
             const form = event.target.children
-            const place = {
-                name: form[1].value,
-                arrival_date: form[3].value, 
-                departure_date: form[5].value,
+            const tripId = document.querySelector("#tripId").innerText
+            const place = { 
+                trip: {
+                    id: tripId
+                },
+                place:{
+                    name: form[1].value,
+                    arrival_date: form[3].value, 
+                    departure_date: form[5].value,
+                }
             }
             const configObj = {
                 method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            },
-            body: JSON.stringify({place})
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify(place)
             }
             Place.fetchNewPlace(configObj)
         })
     }
 
     static fetchNewPlace(configObj) {
-        fetch("https://localhost3000/places", configObj)
+        fetch("http://localhost:3000/places", configObj)
             .then(resp => resp.json)
-            .then(obj => console.log(obj))
+            .then(place => console.log(place))
     }
 
 }
