@@ -90,3 +90,13 @@ h3 {
     top: 5px;
     left: 5px;
 }
+
+.mode {
+    font-size: 15px;
+    text-indent: 20px
+}
+
+.dates {
+    font-size: 15px;
+    text-indent: 20px
+}

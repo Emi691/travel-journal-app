@@ -13,17 +13,17 @@ class Transportation {
     appendTransportation() {
         let transportDiv = document.querySelector('.transports')
         let transDiv = document.createElement('div')
-        let startLocation = document.createElement('p')
-        let endLocation = document.createElement('p')
+        let places = document.createElement('p')
         let mode = document.createElement('p')
-        let arrivalDate = document.createElement('p')
-        let departureDate = document.createElement('p')
-        startLocation.innerText = this.start_location
-        endLocation.innerText = this.end_location
+        let dates = document.createElement('p')
+        places.innerText = `${this.start_location} - ${this.end_location}`
+        places.className = "transPlaces"
         mode.innerText = this.mode
-        arrivalDate.innerText = this.arrival_date
-        departureDate.innerText = this.departure_date
-        transDiv.append(startLocation, endLocation, mode, arrivalDate, departureDate)
+        mode.className = "mode"
+        dates.innerText = `departing: ${this.departure_date} arriving: ${this.arrival_date}`
+        dates.className = "dates"
+        places.append(mode, dates)
+        transDiv.append(places)
         transportDiv.append(transDiv)
     }
 }

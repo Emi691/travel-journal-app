@@ -121,28 +121,28 @@ class Trip {
         backButton.innerText = "Back"
         backButton.className = "back"
         showDiv.className = "showTrip"
-        placesDiv.className = "place"
+        placesDiv.className = "places"
         placesDiv.innerHTML = "<h4>Locations: </h4>"
         transportsDiv.className = "transports"
-        transportsDiv.innerHTML = "<h4> Transporations: </h4>"
+        transportsDiv.innerHTML = "<h4> Transportations: </h4>"
         journalsDiv.className = "journals"
         journalsDiv.innerHTML = "<h4>Journals: </h4>"
         body.innerHTML = ""
-        showDiv.append(title, depDate, retDate, backButton, placesDiv, transportsDiv, journalsDiv)
-        for (place of this.places) {
+        showDiv.append(title, depDate, retDate, backButton, placesDiv, transportsDiv, journalsDiv) 
+        body.append(showDiv)
+
+        for (const place of this.places) {
             place.appendPlace()
         }
 
-        for (transportation of this.transportations) {
-            transportation.appendTransporation()
+        for (const transportation of this.transportations) {
+            transportation.appendTransportation()
         }
 
-        for (journal of this.journals) {
+        for (const journal of this.journals) {
             journal.appendJournal()
         }
 
-        body.append(showDiv)
-        
         backButton.addEventListener('click', event => {
             location.reload()
         })
