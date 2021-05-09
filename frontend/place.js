@@ -2,6 +2,7 @@ class Place {
     static allPlaces = []
 
     constructor(place) {
+        this.id = place.id
         this.name = place.name
         this.arrival_date = place.arrival_date
         this.departure_date = place.departure_date

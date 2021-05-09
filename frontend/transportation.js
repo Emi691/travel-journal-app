@@ -2,6 +2,7 @@ class Transportation {
     static allTransportations = []
 
     constructor(transportation) {
+        this.id = transportation.id
         this.start_location = transportation.start_location
         this.end_location = transportation.end_location
         this.mode = transportation.mode
