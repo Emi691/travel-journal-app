@@ -57,13 +57,38 @@ class Place {
         <input type = 'date' name = 'arrivalDate'></input>
         <label>Departure Date: </label>  
         <input type = 'date' name = 'departureDate'></input>
-        <input type = "submit" id = "submitTrip" value = "Bon Voyage!"></input> 
+        <input type = "submit" id = "submitTrip" value = "Add Location"></input> 
         </form>`
 
         form.id = "newPlaceForm"
         form.innerHTML = formHTML
         button.style.display = "none"
         placesDiv.prepend(form)
+
+        form.addEventListener('submit', event => {
+            event.preventDefault()
+            const form = event.target.children
+            const place = {
+                name: form[1].value,
+                arrival_date: form[3].value, 
+                departure_date: form[5].value,
+            }
+            const configObj = {
+                method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({place})
+            }
+            Place.fetchNewPlace(configObj)
+        })
+    }
+
+    static fetchNewPlace(configObj) {
+        fetch("https://localhost3000/places", configObj)
+            .then(resp => resp.json)
+            .then(obj => console.log(obj))
     }
 
 }
