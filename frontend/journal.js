@@ -7,6 +7,19 @@ class Journal {
         Journal.allJournals.push(this)
     }
 
+    static appendJournals(){
+        let showDiv = document.querySelector('.showTrip')
+        let journalsDiv = document.createElement('div')
+        let title = document.createElement('h4')
+        let button = document.createElement('button')
+        journalsDiv.className = "Journals"
+        title.innerText = "Journal:"
+        button.innerText = "+"
+        button.className = "addTransport"
+        journalsDiv.append(title, button)
+        showDiv.append(journalsDiv) 
+    }
+
     appendJournal() {
         let journalsDiv = document.querySelector('.journals')
         let journalDiv = document.createElement('div')

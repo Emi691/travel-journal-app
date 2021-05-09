@@ -10,6 +10,19 @@ class Transportation {
         Transportation.allTransportations.push(this)
     }
 
+    static appendTransportations(){
+        let showDiv = document.querySelector('.showTrip')
+        let transportDiv = document.createElement('div')
+        let title = document.createElement('h4')
+        let button = document.createElement('button')
+        transportDiv.className = "transports"
+        title.innerText = "Transportation:"
+        button.innerText = "+"
+        button.className = "addTransport"
+        transportDiv.append(title, button)
+        showDiv.append(transportDiv) 
+    }
+
     appendTransportation() {
         let transportDiv = document.querySelector('.transports')
         let transDiv = document.createElement('div')

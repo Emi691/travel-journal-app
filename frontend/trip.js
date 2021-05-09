@@ -112,22 +112,18 @@ class Trip {
         let depDate = document.createElement('p')
         let retDate = document.createElement('p')
         let backButton = document.createElement('Button')
-        let transportsDiv = document.createElement('div')
-        let journalsDiv = document.createElement('div')
         title.innerText = this.title
         depDate.innerText = `Departure Date: ${start.toDateString()}`
         retDate.innerText = `Return Date: ${end.toDateString()}`
         backButton.innerText = "Back"
         backButton.className = "back"
         showDiv.className = "showTrip"
-        transportsDiv.className = "transports"
-        transportsDiv.innerHTML = "<h4> Transportations: </h4>"
-        journalsDiv.className = "journals"
-        journalsDiv.innerHTML = "<h4>Journals: </h4>"
         body.innerHTML = ""
-        showDiv.append(title, depDate, retDate, backButton, transportsDiv, journalsDiv) 
+        showDiv.append(title, depDate, retDate, backButton) 
         body.append(showDiv)
         Place.appendPlaces()
+        Transportation.appendTransportations()
+        Journal.appendJournals()
 
         for (const place of this.places) {
             place.appendPlace()
