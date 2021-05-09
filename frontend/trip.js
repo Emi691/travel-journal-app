@@ -8,6 +8,8 @@ class Trip {
         this.startDate = trip.attributes.startDate
         this.endDate = trip.attributes.endDate
         this.locations = []
+        this.transportations = []
+        this.journals = []
         Trip.allTrips.push(this)
     }
 
@@ -21,10 +23,17 @@ class Trip {
                     for ( const trip of trips) {
                         let newTrip = new Trip(trip)
                         let tripLocations = trip.attributes.locations
+                        let tripTransports = trip.attributes.transportations
+                        let tripJournals = trip.attributes.journals
                         for (const location of tripLocations){
                              newTrip.locations.push(new Location(location))
                         }
-                        debugger
+                        for (const transport of tripTransports){
+                            newTrip.transportations.push(new Transportation(transport))
+                        }
+                        for (const journal of tripJournals){
+                            newTrip.journals.push(new Journal(journal))
+                        }
                         newTrip.appendTrip()
                     }
                 })
