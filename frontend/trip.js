@@ -121,11 +121,7 @@ class Trip {
         body.append(showDiv)
         
         backButton.addEventListener('click', event => {
-            body.innerHTML = bodyHTML
-            let titles = document.querySelectorAll('h4')
-            for (title of titles){
-            Trip.clickTitle(title)
-            } 
+            location.reload()
         })
    }
 
