@@ -17,7 +17,8 @@ class Place {
         placesDiv.className = "places"
         title.innerText = "Locations:"
         button.innerText = "+"
-        button.className = "addPlace"
+        button.className = "add"
+        button.id = "addPlace"
         placesDiv.append(title, button)
         showDiv.append(placesDiv) 
     }

@@ -16,7 +16,8 @@ class Journal {
         journalsDiv.className = "Journals"
         title.innerText = "Journal:"
         button.innerText = "+"
-        button.className = "addTransport"
+        button.className = "add"
+        button.id = "addJournal"
         journalsDiv.append(title, button)
         showDiv.append(journalsDiv) 
     }

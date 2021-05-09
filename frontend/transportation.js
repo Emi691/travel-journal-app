@@ -19,7 +19,8 @@ class Transportation {
         transportDiv.className = "transports"
         title.innerText = "Transportation:"
         button.innerText = "+"
-        button.className = "addTransport"
+        button.className = "add"
+        button.id = "addTransport"
         transportDiv.append(title, button)
         showDiv.append(transportDiv) 
     }
