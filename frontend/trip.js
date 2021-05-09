@@ -102,6 +102,7 @@ class Trip {
 
    showTrip(event) {
         let body = document.querySelector('body')
+        let bodyHTML = body.innerHTML
         let showDiv = document.createElement('div')
         let title = document.createElement('h3')
         let start = new Date (this.startDate)
@@ -118,6 +119,14 @@ class Trip {
         body.innerHTML = ""
         showDiv.append(title, depDate, retDate, backButton)
         body.append(showDiv)
+        
+        backButton.addEventListener('click', event => {
+            body.innerHTML = bodyHTML
+            let titles = document.querySelectorAll('h4')
+            for (title of titles){
+            Trip.clickTitle(title)
+            } 
+        })
    }
 
    static deleteEvent(event){
