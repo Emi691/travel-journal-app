@@ -9,7 +9,8 @@ class Location {
         Location.allLocations.push(this)
     }
 
-    appendLocation(locationsDiv) {
+    appendLocation() {
+        let locationsDiv = document.querySelector('.locations')
         let locDiv = document.createElement('div')
         let name = document.createElement('p')
         let timeZone = document.createElement('p')

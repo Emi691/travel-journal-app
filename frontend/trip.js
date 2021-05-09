@@ -125,17 +125,33 @@ class Trip {
         let retDate = document.createElement('p')
         let backButton = document.createElement('Button')
         let locationsDiv = document.createElement('div')
+        let transportsDiv = document.createElement('div')
+        let journalsDiv = document.createElement('div')
         title.innerText = this.title
         depDate.innerText = `Departure Date: ${start.toDateString()}`
         retDate.innerText = `Return Date: ${end.toDateString()}`
         backButton.innerText = "Back"
         backButton.className = "back"
         showDiv.className = "showTrip"
+        locationsDiv.className = "locations"
         locationsDiv.innerHTML = "<h4>Locations: </h4>"
+        transportsDiv.className = "transports"
+        transportsDiv.innerHTML = "<h4> Transporations: </h4>"
+        journalsDiv.className = "journals"
+        journalsDiv.innerHTML = "<h4>Journals: </h4>"
         body.innerHTML = ""
-        showDiv.append(title, depDate, retDate, backButton, locationsDiv)
+        showDiv.append(title, depDate, retDate, backButton, locationsDiv, transportsDiv, journalsDiv)
+
         for (location of this.locations) {
-            location.appendLocation(locationsDiv)
+            location.appendLocation()
+        }
+
+        for (transportation of this.transportations) {
+            transportation.appendLocation()
+        }
+
+        for (journal of this.journals) {
+            journal.appendLocation()
         }
 
         body.append(showDiv)

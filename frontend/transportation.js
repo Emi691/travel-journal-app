@@ -11,6 +11,7 @@ class Transportation {
     }
 
     appendTransportation() {
+        let transportDiv = document.querySelector('.transports')
         let transDiv = document.createElement('div')
         let startLocation = document.createElement('p')
         let endLocation = document.createElement('p')
@@ -23,5 +24,6 @@ class Transportation {
         arrivalDate.innerText = this.arrival_date
         departureDate.innerText = this.departure_date
         transDiv.append(startLocation, endLocation, mode, arrivalDate, departureDate)
+        transportDiv.append(transDiv)
     }
 }
