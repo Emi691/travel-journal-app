@@ -13,14 +13,18 @@ class Place {
         let showDiv = document.querySelector('.showTrip')
         let placesDiv = document.createElement('div')
         let title = document.createElement('h4')
+        let formDiv = document.createElement('div')
         let button = document.createElement('button')
         placesDiv.className = "places"
         title.innerText = "Locations:"
         button.innerText = "+"
         button.className = "add"
         button.id = "addPlace"
-        placesDiv.append(title, button)
-        showDiv.append(placesDiv) 
+        formDiv.append(button)
+        placesDiv.append(title, formDiv)
+        showDiv.append(placesDiv)
+        
+        Place.newPlace()
     }
 
     appendPlace() {
@@ -37,7 +41,29 @@ class Place {
         placesDiv.append(placeDiv)
     }
 
-    newPlace() {
-
+    static newPlace() {
+        let button = document.querySelector('#addPlace')
+        button.addEventListener('click', event => Place.addPlaceForm(event))
     }
+
+    static addPlaceForm(event) {
+        const button = event.target
+        const placesDiv = button.parentElement
+        const form = document.createElement('div')
+        const formHTML = `<form>
+        <label>Name: </label> 
+        <input type = 'text' name = 'name'></input>
+        <label>Arrival Date: </label>  
+        <input type = 'date' name = 'arrivalDate'></input>
+        <label>Departure Date: </label>  
+        <input type = 'date' name = 'departureDate'></input>
+        <input type = "submit" id = "submitTrip" value = "Bon Voyage!"></input> 
+        </form>`
+
+        form.id = "newPlaceForm"
+        form.innerHTML = formHTML
+        button.style.display = "none"
+        placesDiv.prepend(form)
+    }
+
 }
