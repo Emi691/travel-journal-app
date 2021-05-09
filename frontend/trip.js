@@ -7,7 +7,7 @@ class Trip {
         this.photoUrl = trip.attributes.photoUrl
         this.startDate = trip.attributes.startDate
         this.endDate = trip.attributes.endDate
-        this.locations = []
+        this.places = 
         this.transportations = []
         this.journals = []
         Trip.allTrips.push(this)
@@ -22,11 +22,11 @@ class Trip {
                     let trips = obj.data
                     for ( const trip of trips) {
                         let newTrip = new Trip(trip)
-                        let tripLocations = trip.attributes.locations
+                        let tripPlaces = trip.attributes.places
                         let tripTransports = trip.attributes.transportations
                         let tripJournals = trip.attributes.journals
-                        for (const location of tripLocations){
-                             newTrip.locations.push(new Location(location))
+                        for (const place of tripPlaces){
+                             newTrip.places.push(new Place(place))
                         }
                         for (const transport of tripTransports){
                             newTrip.transportations.push(new Transportation(transport))
@@ -124,7 +124,7 @@ class Trip {
         let depDate = document.createElement('p')
         let retDate = document.createElement('p')
         let backButton = document.createElement('Button')
-        let locationsDiv = document.createElement('div')
+        let placesDiv = document.createElement('div')
         let transportsDiv = document.createElement('div')
         let journalsDiv = document.createElement('div')
         title.innerText = this.title
@@ -133,25 +133,24 @@ class Trip {
         backButton.innerText = "Back"
         backButton.className = "back"
         showDiv.className = "showTrip"
-        locationsDiv.className = "locations"
-        locationsDiv.innerHTML = "<h4>Locations: </h4>"
+        placesDiv.className = "place"
+        placesDiv.innerHTML = "<h4>Locations: </h4>"
         transportsDiv.className = "transports"
         transportsDiv.innerHTML = "<h4> Transporations: </h4>"
         journalsDiv.className = "journals"
         journalsDiv.innerHTML = "<h4>Journals: </h4>"
         body.innerHTML = ""
-        showDiv.append(title, depDate, retDate, backButton, locationsDiv, transportsDiv, journalsDiv)
-
-        for (location of this.locations) {
-            location.appendLocation()
+        showDiv.append(title, depDate, retDate, backButton, placesDiv, transportsDiv, journalsDiv)
+        for (place of this.places) {
+            place.appendPlace()
         }
 
         for (transportation of this.transportations) {
-            transportation.appendLocation()
+            transportation.appendTransporation()
         }
 
         for (journal of this.journals) {
-            journal.appendLocation()
+            journal.appendJournal()
         }
 
         body.append(showDiv)
