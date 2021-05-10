@@ -91,8 +91,8 @@ class Transportation {
                     id: tripId
                 },
                 transportation:{
-                    start_date: form[1].value,
-                    end_date: form[3].value, 
+                    start_location: form[1].value,
+                    end_location: form[3].value, 
                     mode: form[5].value,
                     departure_date: form[7].value,
                     arrival_date: form[9].value

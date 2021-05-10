@@ -1,5 +1,5 @@
 class Trip < ApplicationRecord
-    has_many :places
-    has_many :transportations
-    has_many :journals
+    has_many :places, :dependent => :delete_all 
+    has_many :transportations, :dependent => :delete_all 
+    has_many :journals, :dependent => :delete_all 
 end
