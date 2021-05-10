@@ -31,16 +31,22 @@ class Journal {
         let journalDiv = document.createElement('div')
         let photo
         let content = document.createElement('p')
+        let deleteButton = document.createElement('button')
         if(this.photo_url.length > 0){
             photo = document.createElement('img')
             photo.className = "pic"
             photo.src = this.photo_url
             journalDiv.append(photo)
         }
-        
+
+        deleteButton.innerText = "x"
+        deleteButton.id = "deleteButton"
         content.innerText = this.content
-        journalDiv.append(content)
+        journalDiv.id = this.id
+        journalDiv.append(content, deleteButton)
         journalsDiv.append(journalDiv)
+
+        deleteButton.addEventListener('click', event => Journal.deleteJournal(event))
     }
 
     static newJournal() {
@@ -98,6 +104,32 @@ class Journal {
                 let formatJournal = {...attributes, ...journal.data}
                 let newJournal = new Journal(formatJournal)
                 newJournal.appendJournal()
+            })
+    }
+
+    static deleteJournal(event) {
+        const journal = Journal.allJournals.find(element => element.id === parseInt(event.target.parentElement.id))
+        const configObj = {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(journal)
+        }
+        Journal.fetchDeleteJournal(configObj, journal)
+        
+    }
+
+    static fetchDeleteJournal(configObj, journal) {
+        fetch(`http://localhost:3000/journals/${journal.id}`, configObj)
+            .then(resp => resp.json())
+            .then(journal => {
+                let journalDiv = document.getElementById(journal.id)
+                const journalObj = Journal.allJournals.find(element => element.id === journal.id)
+                const index = Journal.allJournals.indexOf(journalObj)
+                journalDiv.remove()
+                Journal.allJournals.splice(index, 1)
             })
     }
 

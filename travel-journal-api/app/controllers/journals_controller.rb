@@ -12,7 +12,7 @@ class JournalsController < ApplicationController
 
     def destroy
         journal = Journal.find_by(id: params[:id])
-        Journal.destroy
+        journal.destroy
         render json: {message: "Journal deleted", id: "#{params[:id]}"}
     end
 

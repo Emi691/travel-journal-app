@@ -12,7 +12,6 @@ class TransportationsController < ApplicationController
     end
 
     def destroy
-        #binding.pry
         transportation = Transportation.find_by(id: params[:id])
         transportation.destroy
         render json: {message: "transportation deleted", id: "#{params[:id]}"}
