@@ -74,7 +74,7 @@ class Transportation {
         <input type = 'date' name = 'arrivalDate'></input>
         <label>Departure Date: </label>  
         <input type = 'date' name = 'departureDate'></input>
-        <input type = "submit" id = "submitTrip" value = "Add Location"></input> 
+        <input type = "submit" id = "submitTransportation" value = "Add Transportation"></input> 
         </form>`
 
         form.id = "newTransportForm"

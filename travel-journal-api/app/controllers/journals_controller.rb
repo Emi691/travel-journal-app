@@ -18,7 +18,7 @@ class JournalsController < ApplicationController
 
     private 
 
-    def place_params
-        params.require(:Journal).permit(:photo_url, :content) 
+    def journal_params
+        params.require(:journal).permit(:photo_url, :content) 
     end
 end
