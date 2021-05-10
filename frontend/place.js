@@ -31,16 +31,24 @@ class Place {
         let placesDiv = document.querySelector('.places')
         let placeDiv = document.createElement('div')
         let name = document.createElement('p')
+        let deleteButton = document.createElement('button')
         let dates = document.createElement('p')
         let startDate = new Date (this.arrival_date)
         let endDate = new Date (this.departure_date)
         name.innerText = this.name
         name.className = "name"
+        name.id = this.name
+        deleteButton.innerText = "x"
+        deleteButton.id = "deleteButton"
         dates.innerText = `Arriving: ${startDate.toDateString()} Departing: ${endDate.toDateString()}`
         dates.className = "dates"
-        name.append(dates)
+        name.append(deleteButton, dates)
+        placeDiv.id = this.id
         placeDiv.append(name)
         placesDiv.append(placeDiv)
+
+        deleteButton.addEventListener('click', event => Place.deletePlace(event))
+        
     }
 
     static newPlace() {
@@ -95,6 +103,32 @@ class Place {
 
     static fetchNewPlace(configObj) {
         fetch("http://localhost:3000/places", configObj)
+            .then(resp => resp.json())
+            .then(place => {
+                let attributes = place.data.attributes
+                let formatPlace = {...attributes, ...place.data}
+                let newPlace = new Place(formatPlace)
+                newPlace.appendPlace()
+            })
+    }
+
+    static deletePlace(event) {
+        const tripId = document.querySelector("#tripId").innerText
+        const place = Place.allPlaces.find(element => element.name === event.target.parentElement.id)
+        const configObj = {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(place)
+        }
+        Place.fetchDeletePlace(configObj, place)
+        
+    }
+
+    static fetchNewPlace(configObj, place) {
+        fetch(`http://localhost:3000/place/${place.id}`, configObj)
             .then(resp => resp.json())
             .then(place => {
                 let attributes = place.data.attributes
