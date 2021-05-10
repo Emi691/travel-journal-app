@@ -5,7 +5,7 @@ class TransportationsController < ApplicationController
         trip = Trip.find_by(id: params[:trip][:id])
         trip.transportations << transportation
         if transportation.save
-            render json: PlaceSerializer.new(transportation)
+            render json: TransportationSerializer.new(transportation)
         else
             render json: {alert: transportation.errors.full_messages}
         end
@@ -19,7 +19,7 @@ class TransportationsController < ApplicationController
 
     private 
 
-    def place_params
+    def transportation_params
         params.require(:transportation).permit(:start_location, :end_location, :mode, :arrival_date, :departure_date) 
     end
 end
