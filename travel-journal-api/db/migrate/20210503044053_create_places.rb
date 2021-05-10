@@ -1,9 +1,8 @@
-class CreateLocations < ActiveRecord::Migration[6.1]
+class CreatePlaces < ActiveRecord::Migration[6.1]
   def change
-    create_table :locations do |t|
+    create_table :places do |t|
       t.references :trip, null: false, foreign_key: true
       t.string :name
-      t.string :timezone
       t.datetime :arrival_date
       t.datetime :departure_date
 

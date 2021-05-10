@@ -21,15 +21,14 @@ ActiveRecord::Schema.define(version: 2021_05_03_054236) do
     t.index ["trip_id"], name: "index_journals_on_trip_id"
   end
 
-  create_table "locations", force: :cascade do |t|
+  create_table "places", force: :cascade do |t|
     t.integer "trip_id", null: false
     t.string "name"
-    t.string "timezone"
     t.datetime "arrival_date"
     t.datetime "departure_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["trip_id"], name: "index_locations_on_trip_id"
+    t.index ["trip_id"], name: "index_places_on_trip_id"
   end
 
   create_table "transportations", force: :cascade do |t|
@@ -54,6 +53,6 @@ ActiveRecord::Schema.define(version: 2021_05_03_054236) do
   end
 
   add_foreign_key "journals", "trips"
-  add_foreign_key "locations", "trips"
+  add_foreign_key "places", "trips"
   add_foreign_key "transportations", "trips"
 end
