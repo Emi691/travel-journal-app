@@ -41,9 +41,9 @@ class Place {
         deleteButton.innerText = "x"
         deleteButton.id = "deleteButton"
         dates.innerText = `Arriving: ${startDate.toDateString()} Departing: ${endDate.toDateString()}`
-        dates.className = "dates"
-        name.append(deleteButton, dates)
+        dates.className = "dates" 
         placeDiv.id = this.id
+        name.append(deleteButton, dates)
         placeDiv.append(name)
         placesDiv.append(placeDiv)
 
