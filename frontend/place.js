@@ -113,7 +113,6 @@ class Place {
     }
 
     static deletePlace(event) {
-        const tripId = document.querySelector("#tripId").innerText
         const place = Place.allPlaces.find(element => element.name === event.target.parentElement.id)
         const configObj = {
             method: "DELETE",
@@ -127,14 +126,15 @@ class Place {
         
     }
 
-    static fetchNewPlace(configObj, place) {
-        fetch(`http://localhost:3000/place/${place.id}`, configObj)
+    static fetchDeletePlace(configObj, place) {
+        fetch(`http://localhost:3000/places/${place.id}`, configObj)
             .then(resp => resp.json())
             .then(place => {
-                let attributes = place.data.attributes
-                let formatPlace = {...attributes, ...place.data}
-                let newPlace = new Place(formatPlace)
-                newPlace.appendPlace()
+                let placeDiv = document.getElementById(place.id)
+                const placeObj = Place.allPlaces.find(element => element.id === place.id)
+                const index = Place.allPlaces.indexOf(placeObj)
+                placeDiv.remove()
+                Place.allPlaces.splice(index, 1)
             })
     }
 
