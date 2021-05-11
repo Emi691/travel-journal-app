@@ -1,6 +1,6 @@
 # My Travel Journal
 
-My TRavel journal is a SPA application which allows the user to plan trips and keep journals of their travels.
+My Travel journal is a SPA application which allows the user to plan trips and keep journals of their travels.
 
 ### Summary
 
@@ -36,7 +36,7 @@ In the travel-jounral-api subdirectory of the project, use the following command
 rails s
 ```
 
-Then move to the subdirectory fromt the frontend and use the command
+Then move to the subdirectory for the frontend and use the command
 ```
 open index.html
 ```
