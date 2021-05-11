@@ -122,6 +122,7 @@ class Transportation {
     }
 
     static deleteTransport(event) {
+        debugger
         const transportation = Transportation.allTransportations.find(element => element.id === parseInt(event.target.parentElement.id))
         const configObj = {
             method: "DELETE",
