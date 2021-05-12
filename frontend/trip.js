@@ -142,7 +142,9 @@ class Trip {
         }
 
         backButton.addEventListener('click', event => {
-            location.reload()
+            const body = document.querySelector('body')
+            body.innerHTML = ""
+            loadPage()
         })
    }
 
@@ -167,7 +169,38 @@ class Trip {
         .then(obj => {
             document.getElementById(`${obj.id}`).remove()
         })
-   } 
+   }
+   
+   static addTwineButton() {
+       let twineButton = document.createElement('button')
+       let div = document.querySelector(".form")
+       twineButton.innerText = "Plan a trip to the wolds larges ball of twine!"
+        div.append(twineButton)
+
+        Trip.planTwineTrip(twineButton)
+   }
+
+   static planTwineTrip(twineButton) {
+       twineButton.addEventListener("click", event => {
+        const trip = {
+            title: "See the world's biggest ball of twine",
+            start_date: new Date(), 
+            end_date: new Date(),
+            photo_url: "https://upload.wikimedia.org/wikipedia/commons/3/3a/TwineBallCawkerKs.jpg"
+        }
+
+        const configObj = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({trip})
+        }
+
+        Trip.fetchTrip(configObj)
+       })
+   }
 
 } 
 
