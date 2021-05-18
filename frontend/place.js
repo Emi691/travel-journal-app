@@ -108,6 +108,10 @@ class Place {
                 let attributes = place.data.attributes
                 let formatPlace = {...attributes, ...place.data}
                 let newPlace = new Place(formatPlace)
+                let form = document.querySelector('#newPlaceForm')
+                let button = document.querySelector('#addPlace')
+                form.remove()
+                button.style.display = "block"
                 newPlace.appendPlace()
             })
     }
