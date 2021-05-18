@@ -66,7 +66,7 @@ class Journal {
         <input type = "submit" id = "submitJournal" value = "Add Entry"></input> 
         </form>`
 
-        form.id = "newPlaceForm"
+        form.id = "newJournalForm"
         form.innerHTML = formHTML
         button.style.display = "none"
         journalsDiv.prepend(form)
@@ -103,6 +103,10 @@ class Journal {
                 let attributes = journal.data.attributes
                 let formatJournal = {...attributes, ...journal.data}
                 let newJournal = new Journal(formatJournal)
+                let form = document.querySelector('#newJournalForm')
+                let button = document.querySelector('#addJournal')
+                form.remove()
+                button.style.display = "block"
                 newJournal.appendJournal()
             })
     }

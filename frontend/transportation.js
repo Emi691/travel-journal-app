@@ -117,6 +117,10 @@ class Transportation {
                 let attributes = transportation.data.attributes
                 let formatTransport = {...attributes, ...transportation.data}
                 let newTransport = new Transportation (formatTransport)
+                let form = document.querySelector('#newTransportForm')
+                let button = document.querySelector('#addTransport')
+                form.remove()
+                button.style.display = "block"
                 newTransport.appendTransportation()
             })
     }
